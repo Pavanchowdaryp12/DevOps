@@ -17,29 +17,28 @@ pipeline{
 				           branch "Pavan"
 				     }
 			       }
-			       steps {
-			              echo "hello"
-			       }
+			                   steps {
+			                          echo "hello"
+			                   }
 			}
-                        stage('Four') {
-                                       parllel {
-                                               stage('Unit test') {
-	           	                                          steps {
-			  		                                echo "Running the unit test..."
-					                          }	
-		                               }
-		                               stage('Integration test') {
-		                                                          agent {
-				        	                                docker {
-						                                       reusenode false
-							                               image 'Ubuntu'
-						                                 }	    
-					                                  }
-				                                           steps {
-		                                                                  echo 'Running the integration test...'
-						                           }
-		                               }
-	                                }
-                         }
-                }
+stage('Four') {
+               parllel {
+                       stage('Unit test') {
+	                                  steps {
+			                         echo "Running the unit test..."
+		                          }	
+                       }
+                       stage('Integration test') {
+		                                  agent {
+				                         docker {
+						                 reusenode false
+							         image 'Ubuntu'
+						          }	    
+					           }
+				                   steps {
+		                                          echo 'Running the integration test..
+					           }
+	                 }
+               }
+}
 }
